@@ -19,3 +19,21 @@ infoAboutPerson("Josh", 12, "yellow");
 
 // exercise-2
 
+const tipCalculator = () => {
+    let question = prompt("What is amout of your bill?")
+    let amount = Number(question);
+    if (amount <= 50) {
+      let tip = amount * 0.2;
+      console.log(`Your final bill is ${amount + tip}`);
+    } else if (amount > 50 && amount < 200) {
+      let tip = amount * 0.15;
+      console.log(`Your final bill is ${amount + tip}`);
+    } else if (amount >= 200) {
+      let tip = amount * 0.1;
+      console.log(`Your final bill is ${amount + tip}`);
+    }
+}
+
+tipCalculator()
+
+// exercise-3
