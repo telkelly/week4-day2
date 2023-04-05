@@ -106,11 +106,18 @@ console.log(changeEnough(0.75, [0, 0, 20, 5]));
 
 //exercise-6
 
+let hotel = prompt("How many nights would you stay in the hotel?");
+let plane = prompt("What is your destination?");
+let car = prompt("How many days would you like to rent a car?");
+
 const hotelCost = () => {
-  let question;
-  while (!onlyNum(question)) {
-    question = prompt("How many nights would you stay in the hotel?");
+  while (!onlyNum(hotel)) {
+    hotel = prompt("How many nights would you stay in the hotel?");
   }
+
+  hotel *= 140
+  
+  return hotel;
 };
 
 const onlyNum = (str) => {
@@ -118,4 +125,39 @@ const onlyNum = (str) => {
   return regex.test(str);
 }
 
-console.log(hotelCost());
+const planeRideCost = () => {
+  while (onlyNum(plane)) {
+    plane = prompt("What is your destination?");
+  }
+  plane = plane.toLowerCase();
+  switch (plane) {
+    case "london":
+      plane = 183;
+      break;
+    case "paris":
+      plane = 220;
+      break;
+    default:
+      plane = 300;
+      break;
+  }
+  return plane;
+}
+
+const rentalCarCost = () => {
+  while (!onlyNum(car)) {
+    car = prompt("How many days would you like to rent a car?");
+  }
+  if (car >= 5) {
+    let discount = car * 40 * 0.05;
+    return car * 40 - discount;
+  } else {
+    return car *= 40;
+  }
+}
+
+const totalVacationCost = () => {
+  return alert(`The car costs: $${rentalCarCost()}, the hotel costs: $${hotelCost()}, the plane costs: $${planeRideCost()}`)
+}
+
+totalVacationCost()
